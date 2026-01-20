@@ -1,0 +1,12 @@
+package painel_saude.application.domain.entity {
+
+    class "AuditLogEntry" as entity_audit_log_entry {
+        -id : int
+        -occurred_at : datetime
+        -action : string
+        -resource_type : string
+        -resource_id : string
+        -outcome : ActionOutcome
+    }
+
+}

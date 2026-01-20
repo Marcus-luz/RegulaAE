@@ -1,0 +1,7 @@
+package painel_saude.infrastructure.outbound.persistence.repository {
+
+    class "SqlAlchemyAuditLogReader" as adapter_sql_alchemy_audit_log_reader {
+        +search(criteria: AuditLogSearchCriteria) : AuditLogPage
+    }
+
+}

@@ -1,0 +1,7 @@
+package painel_saude.application.port.input {
+
+    interface "AuthenticateUserByToken" as port_authenticate_user_by_token {
+        +authenticate(request: AuthenticateUserByTokenRequest) : AuthenticateUserByTokenResponse
+    }
+
+}

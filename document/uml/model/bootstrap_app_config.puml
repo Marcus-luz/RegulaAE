@@ -1,0 +1,11 @@
+package painel_saude.bootstrap {
+
+    class "AppConfig" as bootstrap_app_config {
+        -db_url : string
+        -echo_sql : bool
+        -google_client_id : string
+        -google_client_secret : string
+        -env_name : string
+    }
+    
+}

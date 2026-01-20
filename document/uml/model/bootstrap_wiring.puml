@@ -1,0 +1,13 @@
+package painel_saude.bootstrap {
+
+    class "Wiring" as bootstrap_wiring {
+        -config : AppConfig
+
+        +__init__(config_loader: ConfigLoader)
+        +wire_app() : Wiring
+        +get_authenticate_user_port() : port_authenticate_user_by_token
+        +get_update_user_role_port() : port_update_user_role
+        +get_search_audit_log_port() : port_search_audit_log
+    }
+
+}

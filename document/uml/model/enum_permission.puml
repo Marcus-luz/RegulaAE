@@ -1,0 +1,10 @@
+package painel_saude.application.domain.enum {
+
+    enum "Permission" as enum_permission {
+        CREATE
+        RETRIEVE
+        UPDATE
+        DELETE
+    }
+
+}

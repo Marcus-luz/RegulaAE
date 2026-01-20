@@ -1,0 +1,9 @@
+package painel_saude.application.domain.vo {
+
+    class "ResourceAccessMetadata" as vo_resource_access_metadata {
+        -resource_id : string
+        -resource_type : ResourceType
+        -access_level : AccessLevel
+    }
+
+}

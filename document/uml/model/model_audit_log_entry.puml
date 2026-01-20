@@ -1,0 +1,15 @@
+package painel_saude.infrastructure.outbound.persistence.model {
+
+    class "AuditLogEntryModel" as model_audit_log_entry {
+        id : int [PK]
+        ---
+        occurred_at : datetime
+        action : string
+        resource_type : string
+        resource_id : string
+        outcome : string
+        ---
+        user_id : int [FK]
+    }
+
+}

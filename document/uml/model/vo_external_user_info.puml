@@ -1,0 +1,10 @@
+package painel_saude.application.domain.vo {
+
+    class "ExternalUserInfo" as vo_external_user_info {
+        -external_id : string
+        -email : string
+        -name : string
+        -email_verified : bool
+    }
+
+}

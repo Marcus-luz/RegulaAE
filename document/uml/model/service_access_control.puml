@@ -1,0 +1,7 @@
+package painel_saude.application.domain.service {
+
+    class "AccessControlService" as service_access_control {
+        +can(user: User, permission: Permission, metadata: ResourceAccessMetadata) : bool
+    }
+
+}

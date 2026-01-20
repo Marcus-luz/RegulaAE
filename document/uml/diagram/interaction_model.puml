@@ -1,0 +1,77 @@
+@startuml
+
+actor User
+participant App << inbound adapter >>
+participant Input << input port >>
+participant Wiring << bootstrap >>
+participant Config << bootstrap >>
+participant Usecase << application >>
+participant Domain << application >>
+participant Output << output port >>
+participant Persistence << outbound adapter >>
+
+== App Initialization ==
+
+User -> App: starts the app
+activate App
+App -> Wiring: wires the app
+activate Wiring
+Wiring -> Config: loads configuration
+activate Config
+Config --> Wiring: returns configuration
+deactivate Config
+
+Wiring -> Wiring: instantiates outbound adapters
+Wiring -> Wiring: instantiates usecases (implements inbound ports)
+
+Wiring --> App: returns references to inbound ports
+deactivate Wiring
+deactivate App
+
+== Generic Actions ==
+
+User -> App: calls some action
+activate App
+
+App -> Input: invokes application service
+activate Input
+Input -> Usecase: delegates to usecase implementation
+activate Usecase
+
+group optional: load persisted data
+Usecase -> Output: load data
+activate Output
+Output -> Persistence: calls outbound adapter
+activate Persistence
+Persistence --> Output: returns data
+deactivate Persistence
+Output --> Usecase: returns data
+deactivate Output
+end
+
+Usecase -> Domain: applies domain logic
+activate Domain
+Domain --> Usecase: returns domain result
+deactivate Domain
+
+group optional: save data / indicators
+Usecase -> Output: save data / indicators
+activate Output
+Output -> Persistence: calls outbound adapter
+activate Persistence
+Persistence --> Output: confirms persistence
+deactivate Persistence
+Output --> Usecase: confirms operation
+deactivate Output
+end
+
+Usecase --> Input: returns final result
+deactivate Usecase
+Input --> App: returns view model / DTO
+deactivate Input
+
+App -> App: render data and feedback
+App --> User: shows results
+deactivate App
+
+@enduml

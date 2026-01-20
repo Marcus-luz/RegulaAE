@@ -1,0 +1,9 @@
+package painel_saude.application.domain.vo {
+
+    class "AuditLogPage" as vo_audit_log_page {
+        -page : int
+        -page_size : int
+        -total_items : long
+    }
+
+}

@@ -1,0 +1,10 @@
+package painel_saude.application.domain.enum {
+
+    enum "UserRole" as enum_user_role {
+        ADMIN
+        CITIZEN
+        MANAGER
+        PROFESSIONAL
+    }
+
+}

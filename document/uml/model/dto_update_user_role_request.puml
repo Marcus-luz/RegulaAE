@@ -1,0 +1,9 @@
+package painel_saude.application.dto.input {
+
+    class "UpdateUserRoleRequest" as dto_update_user_role_request {
+        -user_id : int
+        -new_role : UserRole
+        -changed_by_user_id : int
+    }
+
+}

@@ -1,0 +1,129 @@
+@startuml
+
+left to right direction
+
+hide circle
+hide empty methods
+skinparam classAttributeIconSize 0
+
+!include_once ../model/adapter_app.puml
+!include_once ../model/adapter_flask_audit_log_controller.puml
+!include_once ../model/adapter_flask_auth_controller.puml
+!include_once ../model/adapter_flask_user_access_controller.puml
+!include_once ../model/adapter_google_oauth_client.puml
+!include_once ../model/adapter_sql_alchemy_audit_log_reader.puml
+!include_once ../model/adapter_sql_alchemy_audit_log_writer.puml
+!include_once ../model/adapter_sql_alchemy_user_repository.puml
+!include_once ../model/bootstrap_app_config.puml
+!include_once ../model/bootstrap_config_loader.puml
+!include_once ../model/bootstrap_wiring.puml
+!include_once ../model/dto_audit_log_entry_view.puml
+!include_once ../model/dto_authenticate_user_by_token_request.puml
+!include_once ../model/dto_authenticate_user_by_token_response.puml
+!include_once ../model/dto_search_audit_log_request.puml
+!include_once ../model/dto_search_audit_log_response.puml
+!include_once ../model/dto_update_user_role_request.puml
+!include_once ../model/dto_update_user_role_response.puml
+!include_once ../model/entity_audit_log_entry.puml
+!include_once ../model/entity_user.puml
+!include_once ../model/enum_access_level.puml
+!include_once ../model/enum_action_outcome.puml
+!include_once ../model/enum_identity_provider.puml
+!include_once ../model/enum_permission.puml
+!include_once ../model/enum_resource_type.puml
+!include_once ../model/enum_user_role.puml
+!include_once ../model/enum_user_status.puml
+!include_once ../model/model_audit_log_entry.puml
+!include_once ../model/model_user.puml
+!include_once ../model/port_authenticate_user_by_token.puml
+!include_once ../model/port_audit_log_reader.puml
+!include_once ../model/port_audit_log_writer.puml
+!include_once ../model/port_external_identity_provider_client.puml
+!include_once ../model/port_search_audit_log.puml
+!include_once ../model/port_update_user_role.puml
+!include_once ../model/port_user_repository.puml
+!include_once ../model/service_access_control.puml
+!include_once ../model/usecase_authenticate_user_by_token_service.puml
+!include_once ../model/usecase_record_user_action_service.puml
+!include_once ../model/usecase_search_audit_log_service.puml
+!include_once ../model/usecase_update_user_role_service.puml
+!include_once ../model/vo_audit_log_page.puml
+!include_once ../model/vo_audit_log_search_criteria.puml
+!include_once ../model/vo_external_user_info.puml
+!include_once ../model/vo_resource_access_metadata.puml
+
+adapter_app "1..1" --> "1..1" bootstrap_wiring #Navy : uses >
+adapter_app ..> adapter_flask_auth_controller #Navy : configures >
+adapter_app ..> adapter_flask_user_access_controller #Navy : configures >
+adapter_app ..> adapter_flask_audit_log_controller #Navy : configures >
+adapter_flask_audit_log_controller ..> dto_audit_log_entry_view #FireBrick : renders >
+adapter_flask_audit_log_controller ..> dto_search_audit_log_request #FireBrick : builds >
+adapter_flask_audit_log_controller ..> dto_search_audit_log_response #FireBrick : receives >
+adapter_flask_audit_log_controller ..> port_search_audit_log #FireBrick : uses >
+adapter_flask_auth_controller ..> dto_authenticate_user_by_token_request #DeepSkyBlue : builds >
+adapter_flask_auth_controller ..> dto_authenticate_user_by_token_response #DeepSkyBlue : receives >
+adapter_flask_auth_controller ..> port_authenticate_user_by_token #DeepSkyBlue : uses >
+adapter_flask_user_access_controller ..> dto_update_user_role_request #OrangeRed : builds >
+adapter_flask_user_access_controller ..> dto_update_user_role_response #OrangeRed : receives >
+adapter_flask_user_access_controller ..> port_update_user_role #OrangeRed : uses >
+adapter_google_oauth_client ..> vo_external_user_info #DarkViolet : maps to >
+adapter_google_oauth_client ..|> port_external_identity_provider_client #DarkViolet : implements >
+adapter_sql_alchemy_audit_log_reader ..> model_audit_log_entry #SaddleBrown : reads from >
+adapter_sql_alchemy_audit_log_reader ..|> port_audit_log_reader #SaddleBrown : implements >
+adapter_sql_alchemy_audit_log_writer ..> model_audit_log_entry #DarkSlateGray : persists to >
+adapter_sql_alchemy_audit_log_writer ..|> port_audit_log_writer #DarkSlateGray : implements >
+adapter_sql_alchemy_user_repository ..> entity_user #SteelBlue : maps to >
+adapter_sql_alchemy_user_repository ..> model_user #SteelBlue : persists to >
+adapter_sql_alchemy_user_repository ..|> port_user_repository #SteelBlue : implements >
+bootstrap_config_loader ..> bootstrap_app_config #DarkMagenta : builds >
+bootstrap_wiring "1..1" --> "1..1" bootstrap_app_config #DarkOliveGreen : holds >
+bootstrap_wiring ..> adapter_sql_alchemy_user_repository #DarkOliveGreen : builds >
+bootstrap_wiring ..> adapter_sql_alchemy_audit_log_writer #DarkOliveGreen : builds >
+bootstrap_wiring ..> adapter_sql_alchemy_audit_log_reader #DarkOliveGreen : builds >
+bootstrap_wiring ..> adapter_google_oauth_client #DarkOliveGreen : builds >
+bootstrap_wiring ..> usecase_authenticate_user_by_token_service #DarkOliveGreen : builds >
+bootstrap_wiring ..> usecase_update_user_role_service #DarkOliveGreen : builds >
+bootstrap_wiring ..> usecase_search_audit_log_service #DarkOliveGreen : builds >
+bootstrap_wiring ..> usecase_record_user_action_service #DarkOliveGreen : builds >
+bootstrap_wiring ..> port_authenticate_user_by_token #DarkOliveGreen : exposes >
+bootstrap_wiring ..> port_update_user_role #DarkOliveGreen : exposes >
+bootstrap_wiring ..> port_search_audit_log #DarkOliveGreen : exposes >
+dto_search_audit_log_response *--> "0..*" dto_audit_log_entry_view #DarkKhaki : contains >
+entity_audit_log_entry "0..*" --> "1..1" entity_user #DarkOrange : performed by >
+port_audit_log_reader ..> vo_audit_log_page #Teal : output >
+port_audit_log_reader ..> vo_audit_log_search_criteria #Teal : input >
+port_audit_log_writer ..> entity_audit_log_entry #Chocolate : input >
+port_search_audit_log ..> dto_search_audit_log_request #Purple : input >
+port_search_audit_log ..> dto_search_audit_log_response #Purple : output >
+port_update_user_role ..> dto_update_user_role_request #MediumPurple : input >
+port_update_user_role ..> dto_update_user_role_response #MediumPurple : output >
+port_user_repository ..> entity_user #Peru : handles >
+service_access_control ..> entity_user #DarkCyan : reads role >
+service_access_control ..> vo_resource_access_metadata #DarkCyan : input >
+usecase_authenticate_user_by_token_service ..> dto_authenticate_user_by_token_request #DodgerBlue : input >
+usecase_authenticate_user_by_token_service ..> dto_authenticate_user_by_token_response #DodgerBlue : output >
+usecase_authenticate_user_by_token_service ..> entity_user #DodgerBlue : creates/updates >
+usecase_authenticate_user_by_token_service ..> port_external_identity_provider_client #DodgerBlue : uses >
+usecase_authenticate_user_by_token_service ..> port_user_repository #DodgerBlue : uses >
+usecase_authenticate_user_by_token_service ..> usecase_record_user_action_service #DodgerBlue : logs via >
+usecase_authenticate_user_by_token_service ..> vo_external_user_info #DodgerBlue : receives >
+usecase_authenticate_user_by_token_service ..|> port_authenticate_user_by_token #DodgerBlue : implements >
+usecase_record_user_action_service ..> entity_audit_log_entry #DarkGreen : creates >
+usecase_record_user_action_service ..> entity_user #DarkGreen : uses >
+usecase_record_user_action_service ..> port_audit_log_writer #DarkGreen : uses >
+usecase_search_audit_log_service ..> dto_audit_log_entry_view #Blue : maps to >
+usecase_search_audit_log_service ..> dto_search_audit_log_request #Blue : input >
+usecase_search_audit_log_service ..> dto_search_audit_log_response #Blue : output >
+usecase_search_audit_log_service ..> port_audit_log_reader #Blue : uses >
+usecase_search_audit_log_service ..> vo_audit_log_page #Blue : receives >
+usecase_search_audit_log_service ..> vo_audit_log_search_criteria #Blue : builds >
+usecase_search_audit_log_service ..|> port_search_audit_log #Blue : implements >
+usecase_update_user_role_service ..> entity_user #Crimson : updates >
+usecase_update_user_role_service ..> port_user_repository #Crimson : uses >
+usecase_update_user_role_service ..> service_access_control #Crimson : checks permissions >
+usecase_update_user_role_service ..> usecase_record_user_action_service #Crimson : logs via >
+usecase_update_user_role_service ..> vo_resource_access_metadata #Crimson : builds >
+usecase_update_user_role_service ..|> port_update_user_role #Crimson : implements >
+vo_audit_log_page *--> "0..*" entity_audit_log_entry #GoldenRod : contains >
+
+@enduml

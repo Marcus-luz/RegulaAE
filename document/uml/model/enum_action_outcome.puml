@@ -1,0 +1,8 @@
+package painel_saude.application.domain.enum {
+
+    enum "ActionOutcome" as enum_action_outcome {
+        SUCCESS
+        FAILURE
+    }
+
+}

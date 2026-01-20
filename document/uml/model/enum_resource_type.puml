@@ -1,0 +1,9 @@
+package painel_saude.application.domain.enum {
+
+    enum "ResourceType" as enum_resource_type {
+        ENTITY
+        REPORT
+        WIDGET
+    }
+
+}

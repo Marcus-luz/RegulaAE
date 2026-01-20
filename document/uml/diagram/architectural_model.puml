@@ -1,0 +1,43 @@
+@startuml
+
+package regulaae {
+
+    artifact app
+
+    component bootstrap
+
+    component infrastructure {
+        port input as infra_in
+        port output as infra_out
+        component inbound
+        component outbound
+    }
+
+    component application {
+        port input as app_in
+    port output as app_out
+    component domain
+    component usecase
+    }
+
+    app ..> bootstrap
+
+    bootstrap ..> inbound
+    bootstrap ..> outbound
+
+    inbound .> infra_in
+    outbound .|> infra_out
+
+    usecase ..> domain
+    usecase ..|> app_in
+    usecase ..> app_out
+
+    app_in -- in_interface
+    infra_in -( in_interface
+
+    app_out -( out_interface
+    infra_out -- out_interface
+
+}
+
+@enduml

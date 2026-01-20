@@ -1,0 +1,7 @@
+package painel_saude.bootstrap {
+
+    class "ConfigLoader" as bootstrap_config_loader {
+        +load() : AppConfig
+    }
+
+}

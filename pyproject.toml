@@ -1,0 +1,15 @@
+[project]
+name = "RegulaAE"
+version = "1.0.0"
+description = "Web application that records and makes visible, through a single ordered queue, access to specialized care consultations and exams initiated from primary care."
+authors = [
+	{ name = "Transparency Group", email = ""}
+]
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["source"]

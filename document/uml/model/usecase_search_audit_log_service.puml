@@ -1,0 +1,7 @@
+package painel_saude.application.usecase {
+
+    class "SearchAuditLogService" as usecase_search_audit_log_service {
+        +search(request: SearchAuditLogRequest) : SearchAuditLogResponse
+    }
+
+}

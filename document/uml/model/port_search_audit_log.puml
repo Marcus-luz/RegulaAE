@@ -1,0 +1,7 @@
+package painel_saude.application.port.input {
+
+    interface "SearchAuditLog" as port_search_audit_log {
+        +search(request: SearchAuditLogRequest) : SearchAuditLogResponse
+    }
+
+}

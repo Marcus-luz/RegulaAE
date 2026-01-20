@@ -1,0 +1,8 @@
+package painel_saude.application.dto.output {
+
+    class "UpdateUserRoleResponse" as dto_update_user_role_response {
+        -user_id : int
+        -new_role : UserRole
+    }
+
+}

@@ -1,0 +1,8 @@
+package painel_saude.application.port.input {
+
+    interface "UpdateUserRole" as port_update_user_role {
+        +update_role(request: UpdateUserRoleRequest) : UpdateUserRoleResponse
+    }
+
+
+}

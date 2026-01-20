@@ -1,0 +1,7 @@
+package painel_saude.application.domain.enum {
+
+    enum "IdentityProvider" as enum_identity_provider {
+        GOOGLE
+    }
+
+}

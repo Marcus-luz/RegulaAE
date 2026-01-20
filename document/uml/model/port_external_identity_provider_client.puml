@@ -1,0 +1,7 @@
+package painel_saude.application.port.output {
+
+    interface "ExternalIdentityProviderClient" as port_external_identity_provider_client {
+        +get_user_info(id_token: string) : ExternalUserInfo
+    }
+
+}

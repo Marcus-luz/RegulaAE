@@ -1,0 +1,7 @@
+package painel_saude.infrastructure.outbound.persistence.repository {
+
+    class "SqlAlchemyAuditLogWriter" as adapter_sql_alchemy_audit_log_writer {
+        +write(entry: AuditLogEntry) : void
+    }
+
+}

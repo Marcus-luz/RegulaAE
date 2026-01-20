@@ -1,0 +1,17 @@
+package painel_saude.infrastructure.outbound.persistence.model {
+
+    class "UserModel" as model_user {
+        id : int [PK]
+        ---
+        name : string
+        email : string
+        role : string
+        status : string
+        identity_provider : string
+        external_id : string
+        email_verified : bool
+        created_at : datetime
+        last_login_at : datetime
+    }
+
+}

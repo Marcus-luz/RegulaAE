@@ -1,0 +1,7 @@
+package painel_saude.infrastructure.inbound.ui.web {
+
+    class "FlaskAuditLogController" as adapter_flask_audit_log_controller {
+        +get_audit_log(request: HttpRequest) : HttpResponse
+    }
+
+}

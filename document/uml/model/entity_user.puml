@@ -1,0 +1,16 @@
+package painel_saude.application.domain.entity {
+
+    class "User" as entity_user {
+        -id : int
+        -name : string
+        -email : string
+        -role : UserRole = CITIZEN
+        -status : UserStatus = ACTIVE
+        -identity_provider : IdentityProvider = GOOGLE
+        -external_id : string
+        -email_verified : bool
+        -created_at : datetime
+        -last_login_at : datetime
+    }
+
+}

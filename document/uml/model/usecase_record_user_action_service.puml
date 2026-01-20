@@ -1,0 +1,7 @@
+package painel_saude.application.usecase {
+
+    class "RecordUserActionService" as usecase_record_user_action_service {
+        +record(user: User, action: string, resource_type: string, resource_id: string, outcome: ActionOutcome) : void
+    }
+
+}

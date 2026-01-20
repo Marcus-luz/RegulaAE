@@ -1,0 +1,14 @@
+package painel_saude.application.domain.vo {
+
+    class "AuditLogSearchCriteria" as vo_audit_log_search_criteria {
+        -user_id : int
+        -occurred_from : datetime
+        -occurred_to : datetime
+        -action : string
+        -resource_type : string
+        -outcome : ActionOutcome
+        -page : int
+        -page_size : int
+    }
+
+}

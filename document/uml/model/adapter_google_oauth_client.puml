@@ -1,0 +1,7 @@
+package painel_saude.infrastructure.outbound.auth {
+
+    class "GoogleOAuthClient" as adapter_google_oauth_client {
+        +get_user_info(id_token: string) : ExternalUserInfo
+    }
+
+}

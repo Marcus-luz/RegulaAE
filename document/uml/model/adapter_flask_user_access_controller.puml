@@ -1,0 +1,7 @@
+package painel_saude.infrastructure.inbound.ui.web {
+
+    class "FlaskUserAccessController" as adapter_flask_user_access_controller {
+        +update_user_role(request: HttpRequest) : HttpResponse
+    }
+
+}

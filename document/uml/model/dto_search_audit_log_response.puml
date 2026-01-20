@@ -1,0 +1,9 @@
+package painel_saude.application.dto.output {
+
+    class "SearchAuditLogResponse" as dto_search_audit_log_response {
+        -page: int
+        -page_size: int
+        -total_items: long
+    }
+
+}

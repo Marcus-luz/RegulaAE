@@ -1,0 +1,41 @@
+@startuml
+
+package regulaae{
+    package application{
+        package domain{
+            package entity{}
+            package enum{}
+            package exception{}
+            package service{}
+            package vo{}
+        }
+        package dto{
+            package input{}
+            package output{}
+        }
+        package port{
+            package input{}
+            package output{}
+        }
+        package usecase{}
+    }
+    package bootstrap{}
+    package infrastructure{
+        package inbound{
+            package web{
+                package http{}
+                package template{}
+                package static{}
+            }
+        }
+        package outbound{
+            package persistence{
+                package migration{}
+                package model{}
+                package repository{}
+            }
+        }
+    }
+}
+
+@enduml

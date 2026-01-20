@@ -1,0 +1,41 @@
+name: health_env
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+
+  # Variáveis de Ambiente
+  - python-dotenv
+
+  # Ambiente Interativo
+  - jupyterlab
+  - ipykernel
+
+  # Controle de Versão
+  - git
+  - git-lfs
+
+  # Backend Web (Flask)
+  - flask
+  - flask-cors
+  - gunicorn
+
+  # Motores de Consulta / Persistência
+  - duckdb
+  - sqlalchemy
+  - sqlite
+
+  # Núcleo de Ciência de Dados
+  - pandas
+  - pyarrow
+
+  # Análise Estatística
+  - numpy
+  - scipy
+  - statsmodels
+
+  # Visualização de Dados
+  - matplotlib
+  - seaborn
+  - plotly

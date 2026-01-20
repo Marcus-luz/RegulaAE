@@ -1,0 +1,15 @@
+package painel_saude.application.dto.output {
+
+    class "AuditLogEntryView" as dto_audit_log_entry_view {
+        -id : int
+        -occurred_at : datetime
+        -action : string
+        -resource_type : string
+        -resource_id : string
+        -outcome : ActionOutcome
+        -user_id : int
+        -user_name : string
+        -user_email : string
+    }
+
+}

@@ -1,0 +1,7 @@
+package painel_saude.application.dto.input {
+
+    class "AuthenticateUserByTokenRequest" as dto_authenticate_user_by_token_request {
+        -id_token : string
+    }
+
+}

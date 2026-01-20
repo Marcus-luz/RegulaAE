@@ -1,0 +1,11 @@
+package painel_saude.application.dto.output {
+
+    class "AuthenticateUserByTokenResponse" as dto_authenticate_user_by_token_response {
+        -user_id : int
+        -name : string
+        -email : string
+        -role : UserRole
+        -status : UserStatus
+    }
+
+}

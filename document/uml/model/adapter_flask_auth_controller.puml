@@ -1,0 +1,7 @@
+package painel_saude.infrastructure.inbound.ui.web {
+
+    class "FlaskAuthController" as adapter_flask_auth_controller {
+        +authenticate_with_google(request: HttpRequest) : HttpResponse
+    }
+
+}

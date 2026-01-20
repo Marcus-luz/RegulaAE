@@ -1,0 +1,9 @@
+package painel_saude.infrastructure.outbound.persistence.repository {
+
+    class "SqlAlchemyUserRepository" as adapter_sql_alchemy_user_repository {
+        +find_by_id(id: int) : User
+        +find_by_email(email: string) : User
+        +save(user: User) : void
+    }
+
+}

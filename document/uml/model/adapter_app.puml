@@ -1,0 +1,8 @@
+package painel_saude.infrastructure.inbound.ui.web {
+
+    class "App" as adapter_app {
+        +__init__(wiring: Wiring)
+        +run() : void
+    }
+
+}

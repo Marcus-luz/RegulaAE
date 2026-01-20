@@ -1,0 +1,14 @@
+package painel_saude.application.dto.input {
+
+    class "SearchAuditLogRequest" as dto_search_audit_log_request {
+        -user_id : int
+        -occurred_from : datetime
+        -occurred_to : datetime
+        -action : string
+        -resource_type : string
+        -outcome : ActionOutcome
+        -page : int
+        -page_size : int
+    }
+
+}

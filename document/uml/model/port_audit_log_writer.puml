@@ -1,0 +1,7 @@
+package painel_saude.application.port.output {
+
+    interface "AuditLogWriter" as port_audit_log_writer {
+        +write(entry: AuditLogEntry) : void
+    }
+
+}

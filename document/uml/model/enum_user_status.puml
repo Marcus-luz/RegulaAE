@@ -1,0 +1,8 @@
+package painel_saude.application.domain.enum {
+
+    enum "UserStatus" as enum_user_status {
+        ACTIVE
+        INACTIVE
+    }
+
+}

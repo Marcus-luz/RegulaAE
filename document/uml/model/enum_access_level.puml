@@ -1,0 +1,10 @@
+package painel_saude.application.domain.enum {
+
+    enum "AccessLevel" as enum_access_level {
+        ADMIN_ONLY
+        MANAGER_ONLY
+        PROFESSIONAL_ONLY
+        PUBLIC
+    }
+
+}

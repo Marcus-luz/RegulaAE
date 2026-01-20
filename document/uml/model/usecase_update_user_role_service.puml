@@ -1,0 +1,7 @@
+package painel_saude.application.usecase {
+
+    class "UpdateUserRoleService" as usecase_update_user_role_service {
+        +update_role(request: UpdateUserRoleRequest) : UpdateUserRoleResponse
+    }
+
+}
